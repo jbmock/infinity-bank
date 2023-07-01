@@ -1,5 +1,5 @@
-import Transaction from '../models/transactionModel.js'
-import mongoose from 'mongoose';
+const Transaction = require('../models/transactionModel')
+const mongoose = require('mongoose')
 
 // GET all transactions
 const getTransactions = async (req, res) => {
@@ -43,7 +43,7 @@ const createTransaction = async (req, res) => {
     }
 }
 
-export {
+module.exports = { 
     getTransactions,
     getTransaction,
     createTransaction
