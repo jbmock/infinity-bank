@@ -2,10 +2,10 @@
   "name": "infinity-bank-server",
   "version": "0.1.0",
   "description": "",
-  "main": "server.mjs",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon server.mjs"
+    "dev": "nodemon server.js"
   },
   "engines": {
     "node": "14.21.3",
