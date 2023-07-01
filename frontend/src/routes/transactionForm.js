@@ -72,7 +72,7 @@ const ATMDeposit = ({ onChange, isDeposit, isValid }) => {
       const transaction = {transactionType, amount}
       //const balance = {accountBalance}
 
-      const response = await fetch('http://localhost:4000/api/transactions', {
+      const response = await fetch('https://jessica-mock-fullstackbanking-f5b46f56980a.herokuapp.com//api/transactions', {
         method: 'POST',
         body: JSON.stringify(transaction),
         headers: {
