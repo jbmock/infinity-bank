@@ -14,10 +14,10 @@ const router = express.Router()
 router.use(requireAuth)
 
 // GET all transactions
-router.get('/', getTransactions)
+router.get('https://jessica-mock-fullstackbanking-f5b46f56980a.herokuapp.com/', getTransactions)
 
 // GET a single transaction
-router.get('/:id', getTransaction)
+router.get('https://jessica-mock-fullstackbanking-f5b46f56980a.herokuapp.com/:id', getTransaction)
 
 // POST (create) a new transaction entry
 router.post('/', createTransaction)
