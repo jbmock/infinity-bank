@@ -4,8 +4,6 @@ const { getTransactions, getTransaction, createTransaction } = require('../contr
 
 const requireAuth = require('../middleware/requireAuth')
 
-const router = Router()
-
 //require auth for all API routes
 router.use(requireAuth)
 
