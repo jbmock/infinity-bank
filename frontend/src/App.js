@@ -22,11 +22,6 @@ function App() {
                     path="/" 
                     exact element={<Home/>} 
                 />
-                {/* <Route 
-                    path="/" 
-                    element={<root />} 
-                    errorElement={<ErrorPage/>} 
-                /> */}
                 <Route 
                     path="/CreateAccount" 
                     element={!user ? <CreateAccount/> : <Navigate to="/" />} 

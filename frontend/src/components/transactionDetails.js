@@ -1,11 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-// import { useBalanceContext } from '../hooks/useBalanceContext';
-//import { useAuthContext } from '../hooks/useAuthContext';
 
 const TransactionDetails = ({transaction}) => {
-  //const {user} = useAuthContext()
-  // const {balance} = useBalanceContext()
     return (
         <table className="table table-info table-striped">
   <thead>
@@ -22,7 +18,6 @@ const TransactionDetails = ({transaction}) => {
       <td>{transaction._id}</td>
       <td>{transaction.transactionType}</td>
       <td>{transaction.amount}</td>
-      {/* <td>{balance}</td> */}
       <td>{formatDistanceToNow(new Date(transaction.createdAt), { addSuffix: true })}</td>
     </tr>
   </tbody>
