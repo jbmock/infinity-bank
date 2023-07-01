@@ -10,9 +10,9 @@ const cors = require('cors');
 const path = require('path');
 
 // import routes
-const transactionRoutes = require('./routes/transactions').default
+const transactionRoutes = require('./routes/transactions')
 const balanceRoutes = require('./routes/balance')
-const userRoutes = require('./routes/user').default
+const userRoutes = require('./routes/user')
 
 // express app
 const app = express();

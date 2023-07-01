@@ -1,8 +1,8 @@
-import { Router } from 'express';
+const express = require('express')
+const router = express.Router()
+const { getTransactions, getTransaction, createTransaction } = require('../controllers/transactionController');
 
-import { getTransactions, getTransaction, createTransaction } from '../controllers/transactionController';
-
-import requireAuth from '../middleware/requireAuth';
+const requireAuth = require('../middleware/requireAuth')
 
 const router = Router()
 
@@ -18,4 +18,4 @@ router.get('/api/transactions/:id', getTransaction)
 // POST (create) a new transaction entry
 router.post('/api/transactions', createTransaction)
 
-export default router
+module.exports = router

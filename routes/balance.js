@@ -1,10 +1,9 @@
-import { Router } from 'express';
+const express = require('express')
+const router = express.Router()
 
-import { getBalance, createBalance } from '../controllers/balanceController';
+const { getBalance, createBalance } = require('../controllers/balanceController');
 
-import requireAuth from '../middleware/requireAuth';
-
-const router = Router()
+const requireAuth = require('../middleware/requireAuth');
 
 //require auth for API routes
 router.use(requireAuth)
@@ -15,4 +14,4 @@ router.get('/api/balance', getBalance)
 // POST (create) a new balance entry
 router.post('/api/balance', createBalance)
 
-export default router
+module.exports = router
