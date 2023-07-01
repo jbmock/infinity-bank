@@ -1,24 +1,28 @@
-require('dotenv').config()
+require('dotenv').config();
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 // import routes
-const transactionRoutes = require('./routes/transactions')
+const transactionRoutes = require('./routes/transactions').default
 const balanceRoutes = require('./routes/balance')
-const userRoutes = require('./routes/user')
+const userRoutes = require('./routes/user').default
 
 // express app
 const app = express();
 
 // static server
-const path = require('path');
-app.use(express.static(path.join(__dirname, 'build')));
+app.use(express.static(path.join(__dirname, 'frontend/build')));
 
-// app.get('/*', function (req, res) {
-//     res.sendFile(path.join(__dirname, 'build', 'index.html'));
-// });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/frontend/build/index.html'));
+});
 
 // middleware
 app.use(cors());
@@ -30,17 +34,13 @@ app.use((req, res, next) => {
 });
 
 // let's app use routes
-app.use('/api/transactions', transactionRoutes)
-app.use('/api/balance', balanceRoutes)
-app.use('/api/user', userRoutes)
+app.use(transactionRoutes, balanceRoutes, userRoutes)
 
 // connect to infinity-bank db
-mongoose.connect(process.env.MONGO_URI,
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }
-)
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
    .then(() => {
     // listen for requests
     app.listen(process.env.PORT || 4000, () => {

@@ -37,9 +37,6 @@ const createBalance = async (req, res) => {
     }
 }
 
-// PATCH (update) account balance
-
-
 module.exports = { 
     getBalance,
     createBalance

@@ -1,25 +1,21 @@
-const express = require('express');
+import { Router } from 'express';
 
-const {
-    getTransactions,
-    getTransaction,
-    createTransaction
-} = require('../controllers/transactionController')
+import { getTransactions, getTransaction, createTransaction } from '../controllers/transactionController';
 
-const requireAuth = require('../middleware/requireAuth')
+import requireAuth from '../middleware/requireAuth';
 
-const router = express.Router()
+const router = Router()
 
 //require auth for all API routes
 router.use(requireAuth)
 
 // GET all transactions
-router.get('https://jessica-mock-fullstackbanking-f5b46f56980a.herokuapp.com/', getTransactions)
+router.get('/api/transactions', getTransactions)
 
 // GET a single transaction
-router.get('https://jessica-mock-fullstackbanking-f5b46f56980a.herokuapp.com/:id', getTransaction)
+router.get('/api/transactions/:id', getTransaction)
 
 // POST (create) a new transaction entry
-router.post('/', createTransaction)
+router.post('/api/transactions', createTransaction)
 
-module.exports = router
+export default router
