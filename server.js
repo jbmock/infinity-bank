@@ -6,7 +6,7 @@ const cors = require('cors');
 const path = require('path');
 
 // import routes
-const transactionRoutes = require('./routes/transactions')
+import transactionRoutes from './routes/transactions.js'
 const balanceRoutes = require('./routes/balance')
 const userRoutes = require('./routes/user')
 
