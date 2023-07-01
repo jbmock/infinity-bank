@@ -1,46 +1,50 @@
-const Balance = require('../models/balanceModel')
-const mongoose = require('mongoose')
+import Transaction from '../models/transactionModel.js'
+import mongoose from 'mongoose';
 
-// GET balance
-const getBalance = async (req, res) => {
+// GET all transactions
+const getTransactions = async (req, res) => {
     const user_id = req.user._id
-    const balance = await Balance.find({ user_id }).sort({createdAt: -1})
+    const transactions = await Transaction.find({ user_id }).sort({createdAt: -1})
 
-    res.status(200).json(balance)
+    res.status(200).json(transactions)
+}
+
+// GET a single transaction
+const getTransaction = async (req, res) => {
     const { id } = req.params
     
     // verifies if id is valid mongoose format
     if (!mongoose.Types.ObjectId.isValid(id)) {
-        return res.status(404).json({error: 'Balance not found'})
+        return res.status(404).json({error: 'Transaction not found'})
     }
 
-    // if _id not found
-    if (!balance) {
-        return res.status(404).json({error: 'Balance not found'})
+    // searches for transaction in DB by _id
+    const transaction = await Transaction.findById(id)
+
+    // if transaction not found in DB
+    if (!transaction) {
+        return res.status(404).json({error: 'Transaction not found'})
     }
 
-    // if _id found
-    res.status(200).json(balance)
+    res.status(200).json(transaction)
 }
 
-// POST (create) new balance entry
-const createBalance = async (req, res) => {
-    const {accountBalance} = req.body
+// POST/create new transaction entry
+const createTransaction = async (req, res) => {
+    const {transactionType, amount} = req.body
 
     // add doc to db
     try {
         const user_id = req.user._id
-        const balance = await Balance.create({accountBalance, user_id})
-        res.status(200).json(balance)
+        const transaction = await Transaction.create({transactionType, amount, user_id})
+        res.status(200).json(transaction)
     }   catch (error) {
         res.status(400).json({error: error.message})
     }
 }
 
-// PATCH (update) account balance
-
-
-module.exports = { 
-    getBalance,
-    createBalance
+export {
+    getTransactions,
+    getTransaction,
+    createTransaction
 }
