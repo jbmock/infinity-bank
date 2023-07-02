@@ -10,7 +10,7 @@ export default function Transactions() {
 
     useEffect(() => {
         const fetchTransactions = async () => {
-          const response = await fetch('https://jessica-mock-fullstackbanking-f5b46f56980a.herokuapp.com/api/transactions', {
+          const response = await fetch('/api/transactions', {
             //mode: 'no-cors',
             headers: {
                 'Authorization': `Bearer ${user.token}`
