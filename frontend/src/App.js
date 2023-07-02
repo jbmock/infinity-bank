@@ -3,7 +3,6 @@ import { useAuthContext } from './hooks/useAuthContext';
 import 'bootstrap/dist/css/bootstrap.css';
 
 //routes & components
-//import ErrorPage from './error-page';
 import TransactionForm from './routes/transactionForm';
 import CreateAccount from './routes/createaccount';
 import Home from './routes/home';
