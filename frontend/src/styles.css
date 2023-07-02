@@ -70,10 +70,6 @@ div.error {
     justify-content: flex-start;
 }
 
-.nav-right {
-    margin-left: auto;
-}
-
 .greeting {
     background: lightblue;
     color: darkblue;
@@ -119,13 +115,13 @@ div.error {
     text-align: center;
 }
 
-.nav-item {
+.nav-link {
     font-size: 15px;
     align-items: center;
     display: flex;
 }
 
-.nav-item:hover {
+.nav-link:hover {
     background: rgba(113, 185, 133, 0.9);
     font-weight: 500;
     font-size: 15px;
@@ -140,4 +136,8 @@ div.error {
 
 .nav-link p {
     display: none;
+}
+
+.nav-right {
+    margin-left: auto;
 }
