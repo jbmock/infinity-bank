@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useAuthContext } from './useAuthContext';
+import { useAuthContext } from './useAuthContext.js';
 
 export const useLogin = () => {
     const [error, setError] = useState(null)
@@ -15,7 +15,6 @@ export const useLogin = () => {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email, password})
         })
-        .catch(error => console.error(error));
         const json = await response.json()
 
         if (!response.ok) {
@@ -26,7 +25,7 @@ export const useLogin = () => {
             // save user in local storage to persist login status if user closes browser without logging out
             localStorage.setItem('user', JSON.stringify(json))
 
-            //update auth context
+            //update auth context & loading state
             dispatch({type: 'LOGIN', payload: json})
             setIsLoading(false);
         }

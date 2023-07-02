@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const path = require('path');
+//const path = require('path');
 
 // import routes
 const transactionRoutes = require('./routes/transactions')
@@ -30,7 +30,9 @@ app.use((req, res, next) => {
 });
 
 // let's app use routes
-app.use(transactionRoutes, balanceRoutes, userRoutes)
+app.use('/api/transactions', transactionRoutes)
+app.use('/api/balance', balanceRoutes)
+app.use('/api/user', userRoutes)
 
 // connect to infinity-bank db
 mongoose.connect(process.env.MONGO_URI, {
@@ -39,7 +41,7 @@ mongoose.connect(process.env.MONGO_URI, {
 })
    .then(() => {
     // listen for requests
-    app.listen(process.env.PORT || 5226, () => {
+    app.listen(process.env.PORT || 4000, () => {
         console.log('connected to db & listening on port', process.env.PORT)
        })
    })

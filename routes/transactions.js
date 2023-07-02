@@ -8,12 +8,12 @@ const requireAuth = require('../middleware/requireAuth')
 router.use(requireAuth)
 
 // GET all transactions
-router.get('/api/transactions', getTransactions)
+router.get('/', getTransactions)
 
 // GET a single transaction
-router.get('/api/transactions/:id', getTransaction)
+router.get('/:id', getTransaction)
 
 // POST (create) a new transaction entry
-router.post('/api/transactions', createTransaction)
+router.post('/', createTransaction)
 
 module.exports = router

@@ -4,7 +4,7 @@ import { useTransactionContext } from "./useTransactionContext"
 
 export const useLogout = () => {
     const {dispatch} = useAuthContext()
-    const {dispatch: transactionsDispatch} = useTransactionContext()
+    const {dispatch: transactionDispatch} = useTransactionContext()
     // const {dispatch: balanceDispatch} = useBalanceContext()
 
     const logout = () => {
@@ -14,7 +14,7 @@ export const useLogout = () => {
 
         //dispatch logout action (reset transactions)
         dispatch({type: 'LOGOUT'})
-        transactionsDispatch({type: 'SET_TRANSACTIONS', payload: null})
+        transactionDispatch({type: 'SET_TRANSACTIONS', payload: null})
 
         //dispatch logout action (reset balance)
         // dispatch({type: 'LOGOUT'})

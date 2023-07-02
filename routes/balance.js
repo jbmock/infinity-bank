@@ -9,9 +9,9 @@ const requireAuth = require('../middleware/requireAuth');
 router.use(requireAuth)
 
 // GET a user's balance
-router.get('/api/balance', getBalance)
+router.get('/', getBalance)
 
 // POST (create) a new balance entry
-router.post('/api/balance', createBalance)
+router.post('/', createBalance)
 
 module.exports = router
