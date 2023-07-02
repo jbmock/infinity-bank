@@ -17,7 +17,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, 'frontend/build')));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, + '/frontend/build/index.html'));
+    res.sendFile(path.join(__dirname, 'frontend/build', 'index.html'));
 });
 
 // middleware
@@ -35,14 +35,16 @@ app.use('/api/balance', balanceRoutes)
 app.use('/api/user', userRoutes)
 
 // connect to infinity-bank db
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose
+    .connect(process.env.MONGO_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    })
    .then(() => {
     // listen for requests
-    app.listen(process.env.PORT || 4000, () => {
-        console.log('connected to db & listening on port', process.env.PORT)
+    const port = process.env.PORT || 4000;
+    app.listen(port, () => {
+        console.log('connected to db & listening on port', port)
        })
    })
    .catch((error) => {
