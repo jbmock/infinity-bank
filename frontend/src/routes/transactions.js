@@ -10,7 +10,7 @@ export default function Transactions() {
 
     useEffect(() => {
         const fetchTransactions = async () => {
-          const response = await fetch('http://localhost:4000/api/transactions', {
+          const response = await fetch('/api/transactions', {
             //mode: 'no-cors',
             headers: {
                 'Authorization': `Bearer ${user.token}`
